@@ -1,0 +1,9 @@
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\bin\Debug\BLL_Layer.dll
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\bin\Debug\BLL_Layer.pdb
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\bin\Debug\DAL_Layer2.dll
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\bin\Debug\DAL_Layer2.pdb
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\obj\Debug\BLL_Layer.dll
+C:\Users\Administrator\source\repos\GUI_layer\BLL_Layer\obj\Debug\BLL_Layer.pdb
