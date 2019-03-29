@@ -1,6 +1,6 @@
 ﻿namespace GUI_layer
 {
-    partial class QLNhanVien
+    partial class frmNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -30,8 +30,11 @@
         {
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.rdbtnNu = new System.Windows.Forms.RadioButton();
+            this.rdbtnNam = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpkBirthDay = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -52,9 +55,6 @@
             this.btnDeleteNhanVien = new System.Windows.Forms.Button();
             this.btnEditNhanVien = new System.Windows.Forms.Button();
             this.btnAddNhanVien = new System.Windows.Forms.Button();
-            this.dtpkBirthDay = new System.Windows.Forms.DateTimePicker();
-            this.rdbtnNam = new System.Windows.Forms.RadioButton();
-            this.rdbtnNu = new System.Windows.Forms.RadioButton();
             this.panel6.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -89,6 +89,28 @@
             this.panel2.Size = new System.Drawing.Size(300, 46);
             this.panel2.TabIndex = 4;
             // 
+            // rdbtnNu
+            // 
+            this.rdbtnNu.AutoSize = true;
+            this.rdbtnNu.Location = new System.Drawing.Point(242, 10);
+            this.rdbtnNu.Name = "rdbtnNu";
+            this.rdbtnNu.Size = new System.Drawing.Size(39, 17);
+            this.rdbtnNu.TabIndex = 2;
+            this.rdbtnNu.Text = "Nữ";
+            this.rdbtnNu.UseVisualStyleBackColor = true;
+            // 
+            // rdbtnNam
+            // 
+            this.rdbtnNam.AutoSize = true;
+            this.rdbtnNam.Checked = true;
+            this.rdbtnNam.Location = new System.Drawing.Point(130, 10);
+            this.rdbtnNam.Name = "rdbtnNam";
+            this.rdbtnNam.Size = new System.Drawing.Size(47, 17);
+            this.rdbtnNam.TabIndex = 1;
+            this.rdbtnNam.TabStop = true;
+            this.rdbtnNam.Text = "Nam";
+            this.rdbtnNam.UseVisualStyleBackColor = true;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -107,6 +129,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(300, 46);
             this.panel1.TabIndex = 3;
+            // 
+            // dtpkBirthDay
+            // 
+            this.dtpkBirthDay.CustomFormat = "dd/MM/yyyy";
+            this.dtpkBirthDay.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpkBirthDay.Location = new System.Drawing.Point(134, 8);
+            this.dtpkBirthDay.Name = "dtpkBirthDay";
+            this.dtpkBirthDay.Size = new System.Drawing.Size(150, 20);
+            this.dtpkBirthDay.TabIndex = 1;
             // 
             // label5
             // 
@@ -221,6 +252,7 @@
             this.btnSearchNV.TabIndex = 4;
             this.btnSearchNV.Text = "Tìm ";
             this.btnSearchNV.UseVisualStyleBackColor = true;
+            this.btnSearchNV.Click += new System.EventHandler(this.btnSearchNV_Click);
             // 
             // panel4
             // 
@@ -279,6 +311,7 @@
             this.btnEditNhanVien.TabIndex = 1;
             this.btnEditNhanVien.Text = "Sửa";
             this.btnEditNhanVien.UseVisualStyleBackColor = true;
+            this.btnEditNhanVien.Click += new System.EventHandler(this.btnEditNhanVien_Click);
             // 
             // btnAddNhanVien
             // 
@@ -289,35 +322,6 @@
             this.btnAddNhanVien.Text = "Thêm";
             this.btnAddNhanVien.UseVisualStyleBackColor = true;
             this.btnAddNhanVien.Click += new System.EventHandler(this.btnAddNhanVien_Click);
-            // 
-            // dtpkBirthDay
-            // 
-            this.dtpkBirthDay.Location = new System.Drawing.Point(134, 8);
-            this.dtpkBirthDay.Name = "dtpkBirthDay";
-            this.dtpkBirthDay.Size = new System.Drawing.Size(150, 20);
-            this.dtpkBirthDay.TabIndex = 1;
-            // 
-            // rdbtnNam
-            // 
-            this.rdbtnNam.AutoSize = true;
-            this.rdbtnNam.Checked = true;
-            this.rdbtnNam.Location = new System.Drawing.Point(130, 10);
-            this.rdbtnNam.Name = "rdbtnNam";
-            this.rdbtnNam.Size = new System.Drawing.Size(47, 17);
-            this.rdbtnNam.TabIndex = 1;
-            this.rdbtnNam.TabStop = true;
-            this.rdbtnNam.Text = "Nam";
-            this.rdbtnNam.UseVisualStyleBackColor = true;
-            // 
-            // rdbtnNu
-            // 
-            this.rdbtnNu.AutoSize = true;
-            this.rdbtnNu.Location = new System.Drawing.Point(242, 10);
-            this.rdbtnNu.Name = "rdbtnNu";
-            this.rdbtnNu.Size = new System.Drawing.Size(39, 17);
-            this.rdbtnNu.TabIndex = 2;
-            this.rdbtnNu.Text = "Nữ";
-            this.rdbtnNu.UseVisualStyleBackColor = true;
             // 
             // QLNhanVien
             // 

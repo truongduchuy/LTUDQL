@@ -34,6 +34,10 @@ namespace BLL_Layer
         {
             return hdDAL.HoaDon_Insert(maKH, maNV);
         }
+        public int HoaDon_InsertByMa(string maHD, string maKH, string maNV)
+        {
+            return hdDAL.HoaDon_InsertByMa(maHD, maKH, maNV);
+        }
         public int HoaDon_Update(string maHD, string maKH, string maNV)
         {
             return hdDAL.HoaDon_Update(maHD, maKH, maNV);

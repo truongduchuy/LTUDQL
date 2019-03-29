@@ -26,5 +26,21 @@ namespace BLL_Layer
         {
             return lhDAL.LoaiHang_SelectByMa(maLH);
         }
+        public DataTable LoaiHang_SearchByName(string tenLoaiHang)
+        {
+            return lhDAL.LoaiHang_SearchByName(tenLoaiHang);
+        }
+        public int LoaiHang_Insert(string tenLoaiHang, string ghichu)
+        {
+            return lhDAL.LoaiHang_Insert(tenLoaiHang, ghichu);
+        }
+        public int LoaiHang_Delete(string maLoaiHang)
+        {
+            return lhDAL.LoaiHang_Delete(maLoaiHang);
+        }
+        public int LoaiHang_Update(string maLoaiHang, string tenLoaiHang, string ghichu)
+        {
+            return lhDAL.LoaiHang_Update(maLoaiHang, tenLoaiHang, ghichu);
+        }
     }
 }

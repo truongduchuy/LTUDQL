@@ -26,5 +26,21 @@ namespace BLL_Layer
         {
             return khDAL.KhachHang_SelectByMa(maLH);
         }
+        public DataTable KhachHang_SearchByName(string tenKH)
+        {
+            return khDAL.KhachHang_SearchByName(tenKH);
+        }
+        public int KhachHang_Insert(string tenKH, string diaChi, string sdt, string STK, string MST)
+        {
+            return khDAL.KhachHang_Insert(tenKH, diaChi, sdt, STK, MST);
+        }
+        public int KhachHang_Delete(string maKH)
+        {
+            return khDAL.KhachHang_Delete(maKH);
+        }
+        public int KhachHang_Update(string maKH, string tenKH, string diaChi, string sdt, string STK, string MST)
+        {
+            return khDAL.KhachHang_Update(maKH, tenKH, diaChi, sdt,STK,MST);
+        }
     }
 }

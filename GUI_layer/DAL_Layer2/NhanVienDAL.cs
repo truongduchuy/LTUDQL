@@ -24,6 +24,13 @@ namespace DAL_Layer2
             name[0] = "@MaNV"; value[0] = maNV;
             return thaotac.ExecuteQueryByMa("Select_NhanVienByMa", name, value, 1);
         }
+        public DataTable NhanVien_SearchByName(string tenNV)
+        {
+            name = new string[1];
+            value = new object[1];
+            name[0] = "@TenNV"; value[0] = tenNV;
+            return thaotac.ExecuteQueryByMa("[dbo].[Search_NhanVienByName]", name, value, 1);
+        }
         public int NhanVien_Insert(string tenNV, DateTime NgaySinh, bool gioiTinh, string sdt)
         {
             name = new string[4];
@@ -43,7 +50,7 @@ namespace DAL_Layer2
             name[0] = "@MaNV"; value[0] = maNV;
             return thaotac.ExecuteNonQuery("[dbo].[Delete_NhanVien]", name, value, 1);
         }
-        public int NhanVien_Update(string maNV, string tenNV, DateTime NgaySinh, string gioiTinh, string sdt)
+        public int NhanVien_Update(string maNV, string tenNV, DateTime NgaySinh, bool gioiTinh, string sdt)
         {
             name = new string[5];
             value = new object[5];

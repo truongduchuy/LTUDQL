@@ -26,9 +26,21 @@ namespace BLL_Layer
         {
             return nvDAL.NhanVien_SelectByMa(maLH);
         }
+        public DataTable NhanVien_SearchByName(string tenNV)
+        {
+            return nvDAL.NhanVien_SearchByName(tenNV);
+        }
         public int NhanVien_Insert(string tenNV, DateTime ngaySinh, bool gioiTinh, string sdt)
         {
             return nvDAL.NhanVien_Insert(tenNV, ngaySinh, gioiTinh, sdt);
+        }
+        public int NhanVien_Delete(string maLH)
+        {
+            return nvDAL.NhanVien_Delete(maLH);
+        }
+        public int NhanVien_Update(string maNV, string tenNV, DateTime ngaySinh, bool gioiTinh, string sdt)
+        {
+            return nvDAL.NhanVien_Update(maNV, tenNV, ngaySinh, gioiTinh, sdt);
         }
     }
 }

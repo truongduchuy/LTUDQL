@@ -12,12 +12,12 @@ using System.Windows.Forms;
 
 namespace GUI_layer
 {
-    public partial class QLHangHoa : Form
+    public partial class frmHangHoa : Form
     {
 
         DataTable dt;
         
-        public QLHangHoa()
+        public frmHangHoa()
         {
             InitializeComponent();
         }

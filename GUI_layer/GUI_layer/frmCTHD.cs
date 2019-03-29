@@ -11,46 +11,72 @@ using System.Windows.Forms;
 
 namespace GUI_layer
 {
-    public partial class CTHD : Form
+    public partial class frmCTHD : Form
     {
         DataTable dt;
-        public CTHD()
+        public frmCTHD()
         {
             InitializeComponent();
             LoadHoaDon();
             dtpkHoaDon.Value = DateTime.Now;
+            LoadLoaiHang();
         }
 
         private void dtgv1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             LoadKhachHang();
             LoadNhanVien();
-            LoadLoaiHang();
+            Clear();
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgv1.Rows[e.RowIndex];
+                
                 txtMaHD.Text = row.Cells[0].Value.ToString();
                 dtpkHoaDon.Value = Convert.ToDateTime(row.Cells[1].Value.ToString());
                 cmbKhachHang.Text = row.Cells[2].Value.ToString();
                 cmbNhanVien.Text = row.Cells[3].Value.ToString();
             }
+            
+            dt = CTHD_BLL.Instance.CTHD_SelectByMaHD(txtMaHD.Text);
+            foreach (DataRow dr in dt.Rows)
+            {
 
-            dtgv2.DataSource = CTHD_BLL.Instance.CTHD_SelectByMaHD(txtMaHD.Text);
+                dtgv2.Rows.Add(dr.ItemArray);
+
+            }
+            
             if (dtgv2.Rows.Count > 0)
             {
                 DataGridViewRow row2 = dtgv2.Rows[0];
-                cmbLoaiHang.Text = row2.Cells[0].Value.ToString();
+                txtMaHang.Text = row2.Cells[0].Value.ToString();
                 cmbTenHang.Text = row2.Cells[1].Value.ToString();
                 nmrSL.Value = Convert.ToInt32(row2.Cells[2].Value.ToString());
                 txtDVT.Text = row2.Cells[3].Value.ToString();
                 txtDonGia.Text = row2.Cells[4].Value.ToString();
+                cmbLoaiHang.Text = row2.Cells[5].Value.ToString();
+                TinhTongTien();
             }
+           
             //set button
             btnEditHoaDon.Enabled = true;
             btnDeleteHoaDon.Enabled = true;
             btnAddHoaDon.Enabled = false;
-            btnAddCTHD.Enabled = true;
+            
+            
 
+        }
+        void TinhTongTien()
+        {
+            //Tinh tong tien
+            txtTongTien.Text = "";
+            double tongTien = 0;
+            foreach (DataGridViewRow row in dtgv2.Rows)
+            {
+                tongTien += Convert.ToInt32(dtgv2.Rows[row.Index].Cells[2].Value) *
+                    Convert.ToInt32(dtgv2.Rows[row.Index].Cells[3].Value) *
+                    Convert.ToInt32(dtgv2.Rows[row.Index].Cells[4].Value);
+            }
+            txtTongTien.Text = tongTien.ToString();
         }
         void LoadKhachHang()
         {
@@ -86,11 +112,43 @@ namespace GUI_layer
             dt = HangHoaBLL.Instance.HangHoa_SelectByMa(cmbTenHang.SelectedValue.ToString());
             txtDVT.Text = dt.Rows[0]["DVT"].ToString();
             txtDonGia.Text = dt.Rows[0]["DonGia"].ToString();
+            txtMaHang.Text = cmbTenHang.SelectedValue.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            dtgv2.DataSource = CTHD_BLL.Instance.CTHD_Insert(txtMaHD.Text, cmbTenHang.SelectedValue.ToString(), Convert.ToInt32(nmrSL.Value.ToString()));
+            if (dtgv2.RowCount == 0)
+            {
+                if (nmrSL.Value <= 0)
+                    return;
+                dtgv2.Rows.Add(txtMaHang.Text, cmbTenHang.Text, nmrSL.Value, txtDVT.Text, txtDonGia.Text, cmbLoaiHang.Text);
+                //TinhTongTien();
+                return;
+            }
+            else
+                foreach (DataGridViewRow row in dtgv2.Rows)
+                {
+                    if(txtMaHang.Text == row.Cells[0].Value.ToString())
+                    {
+                        //SL moi + SL cu > 0
+                        if(Convert.ToInt32(row.Cells[2].Value) + nmrSL.Value > 0)
+                        {
+                            row.Cells[2].Value = (Convert.ToInt32(row.Cells[2].Value) + nmrSL.Value).ToString();
+                            //TinhTongTien();
+                            return;
+                        }
+                        else //SLmoi + SL cu <= 0, Xoa hang trong datagridview
+                        {
+                            dtgv2.Rows.RemoveAt(row.Index);
+                            //TinhTongTien();
+                        }
+                    }
+                }
+            if (nmrSL.Value <= 0)
+                return;
+            dtgv2.Rows.Add(txtMaHang.Text, cmbTenHang.Text, nmrSL.Value, txtDVT.Text, txtDonGia.Text, cmbLoaiHang.Text);
+            //TinhTongTien();
+
         }
 
         private void dtgv2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -99,11 +157,12 @@ namespace GUI_layer
             if(e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgv2.Rows[e.RowIndex];
-                cmbLoaiHang.Text = row.Cells[0].Value.ToString();
+                txtMaHang.Text = row.Cells[0].Value.ToString();               
                 cmbTenHang.Text = row.Cells[1].Value.ToString();
                 nmrSL.Value = Convert.ToInt32(row.Cells[2].Value.ToString());
                 txtDVT.Text = row.Cells[3].Value.ToString();
                 txtDonGia.Text = row.Cells[4].Value.ToString();
+                cmbLoaiHang.Text = row.Cells[5].Value.ToString();
             }
         }
         void Clear()
@@ -117,7 +176,7 @@ namespace GUI_layer
             nmrSL.Value = 0;
             txtDVT.Text = "";
             txtDonGia.Text = "";
-            dtgv2.DataSource = new DataTable();
+            dtgv2.Rows.Clear();
         }
         private void btnTaoMoi_Click(object sender, EventArgs e)
         {
@@ -127,37 +186,81 @@ namespace GUI_layer
             Clear();
             dt = HoaDonBLL.Instance.HoaDon_SelectNewID();
             txtMaHD.Text = dt.Rows[0][0].ToString();
-            
+            LoadKhachHang();
+            LoadNhanVien();
+
+
         }
-        DataGridViewRow lastSelected;
+        
         private void btnAddHoaDon_Click(object sender, EventArgs e)
         {
             if (cmbKhachHang.Text != "" && cmbNhanVien.Text != "")
             {
-                HoaDonBLL.Instance.HoaDon_Insert(cmbKhachHang.SelectedValue.ToString(), cmbNhanVien.SelectedValue.ToString());
-                LoadHoaDon();
-                dtgv1.ClearSelection();
-                int nRowIndex = dtgv1.Rows.Count - 1;
 
-                dtgv1.Rows[nRowIndex].Selected = true;
-                dtgv1.Rows[nRowIndex].Cells[0].Selected = true;
+                if (HoaDonBLL.Instance.HoaDon_Insert(cmbKhachHang.SelectedValue.ToString(), cmbNhanVien.SelectedValue.ToString()) > 0)
+                {
+                    foreach (DataGridViewRow row in dtgv2.Rows)
+                    {
+                        CTHD_BLL.Instance.CTHD_Insert(txtMaHD.Text, row.Cells[0].Value.ToString(), Convert.ToInt32(row.Cells[2].Value));
+                    }
+                    MessageBox.Show("Them thanh cong");
+                }
+                else
+                    MessageBox.Show("Them that bai");
+
+                LoadHoaDon();
+                //foreach (DataGridViewRow row in dtgv1.Rows)
+                //{
+                //    if (row.Cells[0].Value.ToString().Trim().Equals(txtMaHD.Text.ToString().Trim()))
+                //    {
+                //        dtgv1.Rows[row.Index].Selected = true;
+                //        return;
+                //    }
+                //}
             }
             else
             {
                 MessageBox.Show("Chọn Khách Hàng và Nhân Viên để thêm");
             }
+
         }
 
         private void btnEditHoaDon_Click(object sender, EventArgs e)
         {
-            HoaDonBLL.Instance.HoaDon_Update(txtMaHD.Text, cmbKhachHang.SelectedValue.ToString(), cmbNhanVien.SelectedValue.ToString());
+            if(HoaDonBLL.Instance.HoaDon_Delete(txtMaHD.Text) > 0)
+            {
+                HoaDonBLL.Instance.HoaDon_InsertByMa(txtMaHD.Text, cmbKhachHang.SelectedValue.ToString(), cmbNhanVien.SelectedValue.ToString());
+                foreach (DataGridViewRow row in dtgv2.Rows)
+                {
+                    CTHD_BLL.Instance.CTHD_Insert(txtMaHD.Text, row.Cells[0].Value.ToString(), Convert.ToInt32(row.Cells[2].Value));
+                }
+                MessageBox.Show("Sua thanh cong");
+            }
+            else MessageBox.Show("Sua that bai");
             LoadHoaDon();
         }
 
         private void btnDeleteHoaDon_Click(object sender, EventArgs e)
         {
-            HoaDonBLL.Instance.HoaDon_Delete(txtMaHD.Text);
+            if (HoaDonBLL.Instance.HoaDon_Delete(txtMaHD.Text) > 0)
+            {
+                MessageBox.Show("Xoa thanh cong");
+            }
+            else
+                MessageBox.Show("Xoa that bai");
             LoadHoaDon();
+        }
+
+        private void CTHD_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //frmKhachHang frm = new frmKhachHang();
+            //frm.Show();
+            //frm.
         }
     }
 }

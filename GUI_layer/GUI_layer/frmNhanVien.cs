@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace GUI_layer
 {
-    public partial class QLNhanVien : Form
+    public partial class frmNhanVien : Form
     {
 
-        public QLNhanVien()
+        public frmNhanVien()
         {
             InitializeComponent();
             LoadNV();
@@ -42,12 +42,13 @@ namespace GUI_layer
 
         private void btnDeleteNhanVien_Click(object sender, EventArgs e)
         {
-            
+            NhanVienBLL.Instance.NhanVien_Delete(txtMaNV.Text);
+            LoadNV();
         }
 
         private void dtgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgvNhanVien.Rows[e.RowIndex];
                 txtMaNV.Text = row.Cells[0].Value.ToString();
@@ -60,6 +61,17 @@ namespace GUI_layer
                 txtSDT.Text = row.Cells[4].Value.ToString();
                 
             }
+        }
+
+        private void btnEditNhanVien_Click(object sender, EventArgs e)
+        {
+            NhanVienBLL.Instance.NhanVien_Update(txtMaNV.Text, txtTenNV.Text, dtpkBirthDay.Value, rdbtnNam.Checked ? true : false, txtSDT.Text);
+            LoadNV();
+        }
+
+        private void btnSearchNV_Click(object sender, EventArgs e)
+        {
+            dtgvNhanVien.DataSource = NhanVienBLL.Instance.NhanVien_SearchByName(txtSearchNV.Text);
         }
     }
 }
