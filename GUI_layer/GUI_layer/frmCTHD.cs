@@ -117,37 +117,54 @@ namespace GUI_layer
 
         private void button1_Click(object sender, EventArgs e)
         {
+            dt = HangHoaBLL.Instance.HangHoa_SelectByMa(txtMaHang.Text);
+            int SLCon = int.Parse(dt.Rows[0]["SLcon"].ToString());
             if (dtgv2.RowCount == 0)
             {
-                if (nmrSL.Value <= 0)
+                if (nmrSL.Value <= 0 || nmrSL.Value>SLCon)
+                {
+                    if (nmrSL.Value <= 0)
+                        MessageBox.Show("Số lượng nhập phải lớn hơn 0.");
+                    else MessageBox.Show("Vượt quá số lượng còn: " + SLCon);
                     return;
+                }
                 dtgv2.Rows.Add(txtMaHang.Text, cmbTenHang.Text, nmrSL.Value, txtDVT.Text, txtDonGia.Text, cmbLoaiHang.Text);
-                //TinhTongTien();
+                TinhTongTien();
                 return;
             }
             else
                 foreach (DataGridViewRow row in dtgv2.Rows)
                 {
-                    if(txtMaHang.Text == row.Cells[0].Value.ToString())
+                    if (txtMaHang.Text == row.Cells[0].Value.ToString())
                     {
                         //SL moi + SL cu > 0
-                        if(Convert.ToInt32(row.Cells[2].Value) + nmrSL.Value > 0)
+                        int SL = Convert.ToInt32(row.Cells[2].Value) + (int)nmrSL.Value;
+                        if (SL > 0)
                         {
-                            row.Cells[2].Value = (Convert.ToInt32(row.Cells[2].Value) + nmrSL.Value).ToString();
-                            //TinhTongTien();
+                            if(SL > SLCon)
+                            {
+                                MessageBox.Show("Vượt quá số lượng còn: "+SLCon);
+                            }
+                            else
+                            {
+                                row.Cells[2].Value = (Convert.ToInt32(row.Cells[2].Value) + nmrSL.Value).ToString();
+                                
+                            }
+                            TinhTongTien();
                             return;
                         }
                         else //SLmoi + SL cu <= 0, Xoa hang trong datagridview
                         {
                             dtgv2.Rows.RemoveAt(row.Index);
-                            //TinhTongTien();
+                            TinhTongTien();
                         }
                     }
                 }
             if (nmrSL.Value <= 0)
                 return;
             dtgv2.Rows.Add(txtMaHang.Text, cmbTenHang.Text, nmrSL.Value, txtDVT.Text, txtDonGia.Text, cmbLoaiHang.Text);
-            //TinhTongTien();
+            TinhTongTien();
+
 
         }
 

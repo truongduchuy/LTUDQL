@@ -65,7 +65,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtgv1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgv2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmrSL)).BeginInit();
@@ -93,7 +92,7 @@
             this.groupBox3.Controls.Add(this.cmbLoaiHang);
             this.groupBox3.Location = new System.Drawing.Point(46, 244);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(646, 306);
+            this.groupBox3.Size = new System.Drawing.Size(545, 306);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chi tiết hóa đơn";
@@ -283,7 +282,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.dtpkHoaDon);
             this.groupBox1.Controls.Add(this.txtMaHD);
             this.groupBox1.Controls.Add(this.btnDeleteHoaDon);
@@ -299,7 +297,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(46, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(646, 235);
+            this.groupBox1.Size = new System.Drawing.Size(545, 235);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hóa đơn";
@@ -426,24 +424,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã hóa đơn";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(543, 13);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 51);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Thêm Khách Hàng";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // CTHD
+            // frmCTHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 556);
+            this.ClientSize = new System.Drawing.Size(640, 556);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox3);
-            this.Name = "CTHD";
+            this.Name = "frmCTHD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CTHD";
             this.Load += new System.EventHandler(this.CTHD_Load);
@@ -497,6 +485,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Button button1;
     }
 }

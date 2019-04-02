@@ -38,6 +38,7 @@ namespace DAL_Layer2
             name[0] = "@TenHang"; value[0] = tenHang;
             return thaotac.ExecuteQueryByMa("Search_HangHoaByName", name, value, 1);
         }
+        
         public int HangHoa_Insert(string tenHang, int dvt, int donGia, int SLCon, string MaLH)
         {
             name = new string[6];

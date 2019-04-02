@@ -33,6 +33,7 @@ namespace BLL_Layer
         {
             return hhDAL.HangHoa_SearchByName(tenHang);
         }
+       
         public int HangHoa_Insert(string tenHang, int dvt, int donGia, int SLCon, string maLH)
         {
             return hhDAL.HangHoa_Insert(tenHang, dvt, donGia, SLCon, maLH);
