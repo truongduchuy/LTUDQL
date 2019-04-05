@@ -39,3 +39,4 @@ C:\Users\Administrator\Documents\GitHub\LTUDQL\GUI_layer\GUI_layer\obj\Debug\GUI
 C:\Users\Administrator\Documents\GitHub\LTUDQL\GUI_layer\GUI_layer\obj\Debug\GUI_layer.frmTaiKhoan.resources
 C:\Users\Administrator\Documents\GitHub\LTUDQL\GUI_layer\GUI_layer\obj\Debug\GUI_layer.QuanLyDanhMuc.resources
 C:\Users\Administrator\Documents\GitHub\LTUDQL\GUI_layer\GUI_layer\obj\Debug\GUI_layer.frmLogin.resources
+C:\Users\Administrator\Documents\GitHub\LTUDQL\GUI_layer\GUI_layer\obj\Debug\GUI_layer.QLNhaHang.resources
