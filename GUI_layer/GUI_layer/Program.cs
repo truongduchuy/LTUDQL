@@ -16,7 +16,7 @@ namespace GUI_layer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLNhaHang());
+            Application.Run(new frmCTHD());
         }
     }
 }
