@@ -26,6 +26,10 @@ namespace BLL_Layer
         {
             return cthdDAL.CTHD_SelectByMaHD(maHD);
         }
+        public DataTable CTHD_HDBH(string maHD)
+        {
+            return cthdDAL.CTHD_HDBH(maHD);
+        }
         public DataTable CTHD_Insert(string maHD, string maHang, int SL)
         {
             return cthdDAL.CTHD_Insert(maHD, maHang, SL);

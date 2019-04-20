@@ -25,6 +25,14 @@ namespace DAL_Layer2
             
             return thaotac.ExecuteQueryByMa("Select_CTHDByMaHD", name, value, 1);
         }
+        public DataTable CTHD_HDBH(string maHD)
+        {
+            name = new string[1];
+            value = new object[1];
+            name[0] = "@MaHD"; value[0] = maHD;
+
+            return thaotac.ExecuteQueryByMa("CTHD_HDBH", name, value, 1);
+        }
         public DataTable CTHD_Insert(string maHD, string maHang, int SL)
         {
             name = new string[3];

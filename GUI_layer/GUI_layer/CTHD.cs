@@ -16,14 +16,14 @@ namespace GUI_layer {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class HoaDon1 : ReportClass {
+    public class CTHD : ReportClass {
         
-        public HoaDon1() {
+        public CTHD() {
         }
         
         public override string ResourceName {
             get {
-                return "HoaDon1.rpt";
+                return "CTHD.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace GUI_layer {
         
         public override string FullResourceName {
             get {
-                return "GUI_layer.HoaDon1.rpt";
+                return "GUI_layer.CTHD.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace GUI_layer {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedHoaDon1 : Component, ICachedReport {
+    public class CachedCTHD : Component, ICachedReport {
         
-        public CachedHoaDon1() {
+        public CachedCTHD() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace GUI_layer {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            HoaDon1 rpt = new HoaDon1();
+            CTHD rpt = new CTHD();
             rpt.Site = this.Site;
             return rpt;
         }
