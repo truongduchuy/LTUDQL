@@ -20,7 +20,7 @@ namespace GUI_layer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DataTable dt = CTHD_BLL.Instance.CTHD_HDBH(Form3.maHD);
+            DataTable dt = CTHD_BLL.Instance.CTHD_HDBH("HD9");
             HoaDonBanHang rp = new HoaDonBanHang();
             rp.SetDataSource(dt);
             crystalReportViewer1.ReportSource = rp;

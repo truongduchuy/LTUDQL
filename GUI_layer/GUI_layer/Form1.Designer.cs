@@ -31,6 +31,7 @@
             this.crystalReportViewer1 = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.HoaDonBanHang2 = new GUI_layer.HoaDonBanHang();
             this.HoaDonBanHang1 = new GUI_layer.HoaDonBanHang();
+            this.HoaDonBanHang3 = new GUI_layer.HoaDonBanHang();
             this.SuspendLayout();
             // 
             // crystalReportViewer1
@@ -41,7 +42,7 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.ReportSource = this.HoaDonBanHang2;
+            this.crystalReportViewer1.ReportSource = this.HoaDonBanHang3;
             this.crystalReportViewer1.Size = new System.Drawing.Size(1350, 730);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
@@ -65,5 +66,6 @@
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer1;
         private HoaDonBanHang HoaDonBanHang1;
         private HoaDonBanHang HoaDonBanHang2;
+        private HoaDonBanHang HoaDonBanHang3;
     }
 }
